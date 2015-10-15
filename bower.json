@@ -1,0 +1,13 @@
+{
+  "name": "bps-store",
+  "homepage": "https://github.com/backupparachute/store",
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bourbon": "~4.2.5",
+    "neat": "~1.7.2"
+  }
+}

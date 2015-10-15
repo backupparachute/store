@@ -1,0 +1,16 @@
+---
+# this ensures Jekyll reads the file to be transformed into CSS later
+---
+
+// Bourbon
+@import 'libs/bourbon/app/assets/stylesheets/bourbon';
+@import 'libs/neat/app/assets/stylesheets/neat';
+
+
+@import '_sass/settings'; // BPS Settings & Foundations Overrides
+
+// Backup Parachute
+@import '_sass/layout';
+@import '_sass/components/billboards/billboards';
+@import '_sass/components/footer/footer';
+@import '_sass/components/header/header';
