@@ -1,5 +1,37 @@
-section {
-  @include outer-container;
-  aside { @include span-columns(3); }
-  article { @include span-columns(9); }
+#main{
+    @include outer-container($row-width);
+    border: 1px solid red;
+}
+
+
+#top-row{
+    @include span-columns(12);
+}
+
+#middle-row{
+    @include span-columns(12);
+}
+#bottom-row{
+    @include span-columns(12);
+}
+
+
+#red {
+  background-color: red;
+}
+
+#orange {
+  background-color: orange;
+}
+
+#yellow {
+  background-color: yellow;
+}
+
+#blue {
+  background-color: blue;
+}
+
+#indigo {
+  background-color: indigo;
 }

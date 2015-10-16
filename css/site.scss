@@ -2,6 +2,8 @@
 # this ensures Jekyll reads the file to be transformed into CSS later
 ---
 
+@import 'libs/normalize-css/normalize.css';
+
 // Bourbon
 @import 'libs/bourbon/app/assets/stylesheets/bourbon';
 @import 'libs/neat/app/assets/stylesheets/neat';
