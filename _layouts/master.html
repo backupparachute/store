@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="http://backupparachute.com/favicon.ico" type="image/x-icon">
     <link rel="icon" href="http://backupparachute.com/favicon.ico" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    {% if site.env == 'production' %}
+    {% if jekyll.environment == 'production' %}
         <link rel="stylesheet" href="{{ site.url }}/css/site.css">
       {% else %}
         <link rel="stylesheet" href="/css/site.css">
