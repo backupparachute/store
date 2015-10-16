@@ -15,3 +15,5 @@ exclude:
 sass:
   style: compressed
   # sass_dir: /
+
+url: http://backupparachute.com/store
