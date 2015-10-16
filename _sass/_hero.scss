@@ -1,0 +1,54 @@
+.hero {
+  $base-border-radius: 3px !default;
+  $action-color: #477DCA !default;
+  $large-screen: em(860) !default;
+  $hero-background-top: #7F99BE;
+  $hero-background-bottom: #20392B;
+  $hero-color: $olive;
+  $gradient-angle: 10deg;
+  $hero-image: 'https://backupparachute.com/images/ripcord-sketch-20.png';
+  $hero-font-size: 70pt;
+
+  @include background(url($hero-image), no-repeat $hero-background-top scroll);
+  background-color: $off-white;
+  background-position: right;
+  background-repeat: no-repeat;
+  // background-size: cover;
+  // padding-bottom: 1em;
+  border: 10px solid $hero-color;
+  line-height: 1em;
+
+  .hero-logo img {
+    height: 4em;
+    margin-bottom: 1em;
+  }
+
+  .hero-inner {
+    @include outer-container;
+    @include clearfix;
+    margin: auto;
+    // padding: 1em;
+    text-align: center;
+
+    .hero-copy {
+      text-align: left;
+
+      h1 {
+        color: $hero-color;
+        // margin-bottom: 0.5em;
+        font-size:$hero-font-size;
+
+      }
+
+      h3 {
+        font-size:$hero-font-size;
+        color: $hero-color;
+        //
+        // @include media($large-screen) {
+        //   font-size: 1.1em;
+        //   max-width: 40%;
+        // }
+      }
+    }
+  }
+}

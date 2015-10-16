@@ -9,13 +9,28 @@
 
     <link rel="shortcut icon" href="http://backupparachute.com/favicon.ico" type="image/x-icon">
     <link rel="icon" href="http://backupparachute.com/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="{{ site.url }}/css/site.css">
-
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    {% if site.env == 'production' %}
+        <link rel="stylesheet" href="{{ site.url }}/css/site.css">
+      {% else %}
+        <link rel="stylesheet" href="/css/site.css">
+      {% endif %}
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,500,900' rel='stylesheet' type='text/css'>
   </head>
   <body class="">
 
+
+    <div class="wrapper-for-content-outside-of-footer">
+
+    {% include header.html %}
+
+      <div id="main" class="">
     {{ content }}
+      </div>
+    </div>
+
+    {% include footer.html %}
+
 
   </body>
 </html>

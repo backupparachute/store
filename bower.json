@@ -9,7 +9,6 @@
   "dependencies": {
     "bourbon": "~4.2.5",
     "neat": "~1.7.2",
-    "foundation": "~5.5.3",
-    "normalize-css": "normalize.css#~3.0.3"
+    "foundation": "~5.5.3"
   }
 }

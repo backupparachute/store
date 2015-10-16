@@ -2,17 +2,22 @@
 # this ensures Jekyll reads the file to be transformed into CSS later
 ---
 
-@import 'libs/normalize-css/normalize.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css';
 
 // Bourbon
 @import 'libs/bourbon/app/assets/stylesheets/bourbon';
+@import 'settings'; // BPS Settings & Foundations Overrides
 @import 'libs/neat/app/assets/stylesheets/neat';
 
 
-@import 'settings'; // BPS Settings & Foundations Overrides
 
 // Backup Parachute
+// @import 'typography';
 @import 'layout';
+@import 'header';
+@import 'hero';
+@import 'cards';
+@import 'footer';
 // @import '_sass/components/billboards/billboards';
 // @import '_sass/components/footer/footer';
 // @import '_sass/components/header/header';
