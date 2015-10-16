@@ -38,7 +38,7 @@
         // margin-bottom: 0.5em;
         font-size:$hero-font-size;
         @include media($large-screen) {
-          font-size: 4em;
+          font-size: 36pt;
         }
       }
 
@@ -46,7 +46,7 @@
         font-size:$hero-font-size;
         color: $hero-color;
         @include media($large-screen) {
-          font-size: 4em;
+          font-size: 36pt;
         }
         //
         // @include media($large-screen) {
