@@ -7,7 +7,7 @@
   $hero-color: $olive;
   $gradient-angle: 10deg;
   $hero-image: 'https://backupparachute.com/images/ripcord-sketch-20.png';
-  $hero-font-size: 70pt;
+  $hero-font-size: 4em;
 
   @include background(url($hero-image), no-repeat $hero-background-top scroll);
   background-color: $off-white;
