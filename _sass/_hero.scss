@@ -7,7 +7,7 @@
   $hero-color: $olive;
   $gradient-angle: 10deg;
   $hero-image: 'https://backupparachute.com/images/ripcord-sketch-20.png';
-  $hero-font-size: 4em;
+  $hero-font-size: 2em;
 
   @include background(url($hero-image), no-repeat $hero-background-top scroll);
   background-color: $off-white;
@@ -16,7 +16,7 @@
   // background-size: cover;
   // padding-bottom: 1em;
   border: 10px solid $hero-color;
-  line-height: 1em;
+  // line-height: 1em;
 
   .hero-logo img {
     height: 4em;
@@ -37,12 +37,17 @@
         color: $hero-color;
         // margin-bottom: 0.5em;
         font-size:$hero-font-size;
-
+        @include media($large-screen) {
+          font-size: 4em;
+        }
       }
 
       h3 {
         font-size:$hero-font-size;
         color: $hero-color;
+        @include media($large-screen) {
+          font-size: 4em;
+        }
         //
         // @include media($large-screen) {
         //   font-size: 1.1em;
