@@ -1,0 +1,36 @@
+<script type="text/javascript">
+
+  function addProductCard(name, descrip, price){
+    price = parseFloat(price);
+    var card = $([
+      "<div class='card'>",
+      "  <div class='card-image'>",
+      "    <img src='https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png' alt=''>",
+      "  </div>",
+      "  <div class='card-header'>",
+      "    " + name,
+      "  </div>",
+      "  <div class='card-copy'>",
+      "    <p>"+descrip+"</p>",
+      "    <p>$"+price.toFixed(2)+"</p>",
+      "  </div>",
+      "</div>"
+    ].join("\n"));
+    card.appendTo('.cards');
+  }
+
+  $(document).ready(function() {
+    if ($('.cards').length){
+      $.ajax({
+        url: 'http://bps.paywithcanopy.com/api/products.json', 
+        headers: { 'Accept-Version': 'v1' }, 
+      })
+       .done(function( data ) {
+         data['products'].forEach(function (product) {
+           addProductCard(product["name"], product["description"], product["price"]);
+         }); 
+       }
+    );
+    }
+  });
+</script>
