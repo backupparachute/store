@@ -1,11 +1,11 @@
 <script type="text/javascript">
 
-  function addProductCard(name, descrip, price){
+  function addProductCard(name, descrip, price, image_url){
     price = parseFloat(price);
     var card = $([
       "<div class='card'>",
       "  <div class='card-image'>",
-      "    <img src='https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png' alt=''>",
+      "    <img src='"+ image_url + "' alt=''>",
       "  </div>",
       "  <div class='card-header'>",
       "    " + name,
@@ -27,7 +27,7 @@
       })
        .done(function( data ) {
          data['products'].forEach(function (product) {
-           addProductCard(product["name"], product["description"], product["price"]);
+           addProductCard(product["name"], product["description"], product["price"], product["image_url"]);
          }); 
        }
     );
