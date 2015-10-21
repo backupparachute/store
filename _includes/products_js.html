@@ -28,7 +28,7 @@
         headers: { 'Accept-Version': 'v1' }, 
       })
        .done(function( data ) {
-         $(location).attr('href','http://bps.paywithcanopy.com/invoices/'+data['token']+'/pay';
+         $(location).attr('href','http://bps.paywithcanopy.com/invoices/'+data['token']+'/pay');
        });
     }); 
     if ($('.cards').length){
