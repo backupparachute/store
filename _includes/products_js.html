@@ -1,6 +1,6 @@
 <script type="text/javascript">
 
-  function addProductCard(name, descrip, price, image_url){
+  function addProductCard(name, descrip, price, image_url, id){
     price = parseFloat(price);
     var card = $([
       "<div class='card'>",
@@ -13,6 +13,7 @@
       "  <div class='card-copy'>",
       "    <p>"+descrip+"</p>",
       "    <p>$"+price.toFixed(2)+"</p>",
+      "    <button class='buy-now' data-product-id="+id+">Buy Now</button>",
       "  </div>",
       "</div>"
     ].join("\n"));
@@ -20,6 +21,16 @@
   }
 
   $(document).ready(function() {
+    $(document).on('click', '.buy-now', function() {
+      productId = $(this).data('product-id');
+      $.ajax({
+        url: 'http://bps.paywithcanopy.com/api/products/buy_now/'+productId+'.json', 
+        headers: { 'Accept-Version': 'v1' }, 
+      })
+       .done(function( data ) {
+         $(location).attr('href','http://bps.paywithcanopy.com/checkout?cart_id='+data['id']);
+       });
+    }); 
     if ($('.cards').length){
       $.ajax({
         url: 'http://bps.paywithcanopy.com/api/products.json', 
@@ -27,10 +38,10 @@
       })
        .done(function( data ) {
          data['products'].forEach(function (product) {
-           addProductCard(product["name"], product["description"], product["price"], product["image_url"]);
+           addProductCard(product["name"], product["description"], product["price"], product["image_url"], product["id"]);
          }); 
-       }
-    );
+       });
     }
+    
   });
 </script>
