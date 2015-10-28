@@ -13,6 +13,7 @@
       "  <div class='card-copy'>",
       "    <p>"+descrip+"</p>",
       "    <p>$"+price.toFixed(2)+"</p>",
+      "    <button class='add-to-cart' data-product-id="+id+">Add to Cart</button>",
       "    <button class='buy-now' data-product-id="+id+">Buy Now</button>",
       "  </div>",
       "</div>"
@@ -21,6 +22,16 @@
   }
 
   $(document).ready(function() {
+    $(document).on('click', '.add-to-cart', function() {
+      productId = $(this).data('product-id');
+      $.ajax({
+        url: 'http://bps.paywithcanopy.com/api/cart/add_item/'+productId+'.json', 
+        headers: { 'Accept-Version': 'v1', 'Cart-Token': localStorage.getItem('cartToken') }, 
+      })
+       .done(function( data ) {
+         localStorage.setItem('cartToken', data['shopping_cart']['token']);
+       });
+    }); 
     $(document).on('click', '.buy-now', function() {
       productId = $(this).data('product-id');
       $.ajax({
