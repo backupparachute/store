@@ -21,27 +21,72 @@
     card.appendTo('.cards');
   }
 
+  function buildHeaders()
+  {
+    var headers;
+    if(localStorage.getItem('cartToken').length)
+    {
+      headers = { 'Accept-Version': 'v1', 'Cart-Token': localStorage.getItem('cartToken') };
+    }
+    else
+    {
+      headers = { 'Accept-Version': 'v1'}; 
+    }
+    return headers;
+  }
+
+  function updateCartTotals(items)
+  {
+    var totalQty = 0;
+    var totalPrice = 0.0;
+    items.forEach(function (item) {
+      totalQty += item['quantity'];
+      totalPrice += item['price'] * item['quantity'];
+    }); 
+    $('#cartQty').html('Items: '+totalQty);
+    $('#cartTotal').html('$'+totalPrice);
+  }
+
   $(document).ready(function() {
+    
+    // Add to Cart
     $(document).on('click', '.add-to-cart', function() {
       productId = $(this).data('product-id');
       $.ajax({
         url: 'http://bps.paywithcanopy.com/api/cart/add_item/'+productId+'.json', 
-        headers: { 'Accept-Version': 'v1', 'Cart-Token': localStorage.getItem('cartToken') }, 
+        headers: buildHeaders(),
       })
        .done(function( data ) {
+         updateCartTotals(data['shopping_cart']['shopping_cart_items']);
          localStorage.setItem('cartToken', data['shopping_cart']['token']);
        });
-    }); 
+    });
+
+    // Buy Now 
     $(document).on('click', '.buy-now', function() {
       productId = $(this).data('product-id');
       $.ajax({
-        url: 'http://bps.paywithcanopy.com/api/products/buy_now/'+productId+'.json', 
-        headers: { 'Accept-Version': 'v1' }, 
+        url: 'http://bps.paywithcanopy.com/api/cart/add_item/'+productId+'.json', 
+        headers: buildHeaders(),
       })
        .done(function( data ) {
-         $(location).attr('href','http://bps.paywithcanopy.com/invoices/'+data['token']+'/pay');
+         $(location).attr('href','http://bps.paywithcanopy.com/checkout?cart_token='+data['shopping_cart']['token']);
+         //$(location).attr('href','http://bps.paywithcanopy.com/invoices/'+data['token']+'/pay');
        });
     }); 
+
+    // Checkout
+    $(document).on('click', '.checkout-btn', function() {
+      $.ajax({
+        url: 'http://bps.paywithcanopy.com/api/cart.json', 
+        headers: buildHeaders(),
+      })
+       .done(function( data ) {
+        $(location).attr('href','http://bps.paywithcanopy.com/checkout?cart_token='+data['shopping_cart']['token']);
+       });
+    });
+
+    // Retrieve all products
     if ($('.cards').length){
       $.ajax({
         url: 'http://bps.paywithcanopy.com/api/products.json', 
@@ -51,6 +96,17 @@
          data['products'].forEach(function (product) {
            addProductCard(product["name"], product["description"], product["price"], product["image_url"], product["id"]);
          }); 
+       });
+    }
+
+    // Retrieve current cart
+    if ($('.checkout-btn').length){
+      $.ajax({
+        url: 'http://bps.paywithcanopy.com/api/cart.json', 
+        headers: buildHeaders(),
+      })
+       .done(function( data ) {
+         updateCartTotals(data['shopping_cart']['shopping_cart_items']);
        });
     }
     
