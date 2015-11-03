@@ -24,13 +24,13 @@
   function buildHeaders()
   {
     var headers;
-    if(localStorage.getItem('cartToken').length)
+    if(localStorage.getItem('cartToken') === null)
     {
-      headers = { 'Accept-Version': 'v1', 'Cart-Token': localStorage.getItem('cartToken') };
+      headers = { 'Accept-Version': 'v1'}; 
     }
     else
     {
-      headers = { 'Accept-Version': 'v1'}; 
+      headers = { 'Accept-Version': 'v1', 'Cart-Token': localStorage.getItem('cartToken') };
     }
     return headers;
   }
