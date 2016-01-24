@@ -9,10 +9,12 @@ layout: master
 
 <script>
   $(document).ready(function() {
-    submitFormOnClick("#signup-submit", function(){
+    submitFormOnClick($("#signup"), function(){
       console.log("SUCCESS");
+			$("#signup").fade();
     }, function() {
       console.log("FAIL");
     });
+
   });
 </script>
