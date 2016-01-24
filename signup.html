@@ -14,19 +14,11 @@ layout: master
 
 <script>
   $(document).ready(function() {
-    // submitFormOnClick("#signup", function(){
-    //   console.log("SUCCESS");
-		// 	$("#signup").fadeOut();
-		// 	$(".thanks").fadeIn();
-    // }, function() {
-    //   console.log("FAIL");
-    // });
-
-		var bucket = new canopy.DataBucket("bps.paywithcanopy.com", "fa5d3c5d156cf05f89f9d48737d833e90c61ab3a");
+		var bucket = new Canopy.DataBucket("bps.paywithcanopy.com", "fa5d3c5d156cf05f89f9d48737d833e90c61ab3a");
 		bucket.register($("#signup"),
 		  function() {
 	      console.log("SUCCESS");
-				$("#signup").fadeOut();
+				$("#signup").hide();
 				$(".thanks").fadeIn();
     	}, function() {
       	console.log("FAIL");
