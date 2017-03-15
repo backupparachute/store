@@ -20,3 +20,29 @@ layout: master
 </div>
 
 </section>
+
+<section class="row">
+	<form id="signup" name="signup">
+		<label for="email">Email Address</label>
+		<input class="text" name="email" type="email"  required="" />
+		<input id="signup-submit" class="btn" type="submit" value="Sign Up" />
+	</form>
+
+	<div class="thanks" style="display:none;">
+		<h2>Thanks!</h2>
+	</div>
+</section>
+
+<script>
+  $(document).ready(function() {
+		var bucket = new BazaarPass.DataBucket("kyle", "8b9110bf7019c7437ddf5fe5e6d517ad252b65a9");
+		bucket.register($("#signup"),
+		  function() {
+	      console.log("SUCCESS");
+				$("#signup").hide();
+				$(".thanks").fadeIn();
+    	}, function() {
+      	console.log("FAIL");
+    	});
+  });
+</script>
